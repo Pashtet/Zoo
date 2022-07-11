@@ -23,4 +23,18 @@ public class User {
         }
         System.out.println("Необходимо " + foodAMonth + " еды типа " + typeFood);
     }
+
+    void countMealsForAnimalAMonth(Animal2[] animals) {
+        int foodAMonth = 0, food2AtMonth = 0;
+        String typeFood, typeFood2;
+        typeFood = animals[0].getMeal().getName();
+        typeFood2 = animals[0].getSecondMeal().getName();
+        for (Animal2 a : animals) {
+            CountFood cf = (CountFood) a;
+            foodAMonth += cf.countOneFoodAMonth()/2;
+            food2AtMonth += a.countSecondFoodAMonth()/2;
+        }
+        System.out.println("Необходимо " + foodAMonth + " еды типа " + typeFood + " и " + food2AtMonth + " еды типа " + typeFood2);
+    }
+
 }

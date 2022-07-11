@@ -35,7 +35,6 @@ class Monkey extends Animal implements Eat, CountFood {
         return s;
     }
 
-
     @Override
     public int countOneFoodAMonth() {
         return (int) Math.round(30.0 * this.getCaloriesConsumption() / this.getMeal().getCalories());
@@ -64,29 +63,39 @@ class Lion extends Animal implements Eat, CountFood {
         return (int) Math.round(30.0 * this.getCaloriesConsumption() / this.getMeal().getCalories());
     }
 }
-
-class Bear extends Animal implements Eat {
+abstract class Animal2 extends Animal{
     Meal secondMeal;
-
-    public Bear(int caloriesConsumption, Meal meal, Meal secondMeal) {
-        super(caloriesConsumption, meal);
+    public Animal2(int caloriesConsumption, Meal meal, Meal secondMeal) {
+        super(caloriesConsumption,meal);
         this.secondMeal = secondMeal;
     }
-
     public Meal getSecondMeal() {
         return secondMeal;
     }
 
+    public int countSecondFoodAMonth() {
+        return (int) Math.round(30.0 * this.getCaloriesConsumption() / this.getSecondMeal().getCalories());
+    }
+}
+class Bear extends Animal2 implements Eat, CountFood {
+
+    public Bear(int caloriesConsumption, Meal meal, Meal secondMeal) {
+        super(caloriesConsumption, meal,secondMeal);
+    }
     @Override
     public void eatPerDay() {
         System.out.println("I'm eat " + Math.round(1.0 * this.getCaloriesConsumption() / 2 / this.getMeal().getCalories()) + " meat and " +
                 Math.round(1.0 * this.getCaloriesConsumption() / 2 / this.getSecondMeal().getCalories()) + " bananas a day.");
     }
-
     public String eatPerMonth() {
         String s;
         s = "I'm eat " + Math.round(30.0 * this.getCaloriesConsumption() / 2 / this.getMeal().getCalories()) + " meat and " +
                 Math.round(30.0 * this.getCaloriesConsumption() / 2 / this.getSecondMeal().getCalories()) + " bananas a month.";
         return s;
     }
+    @Override
+    public int countOneFoodAMonth() {
+        return (int) Math.round(30.0 * this.getCaloriesConsumption() / this.getMeal().getCalories());
+    }
+
 }

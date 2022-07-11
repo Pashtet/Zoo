@@ -9,7 +9,7 @@ public class Main {
         int numberOfBears = 2;
         Animal[] monkeys = new Monkey[numberOfMonkeys];
         Animal[] lions = new Lion[numberOfLions];
-        Animal[] bears = new Bear[numberOfBears];
+        Animal2[] bears = new Bear[numberOfBears];
         for (int i = 0; i < monkeys.length; i++)
             monkeys[i] = new Monkey(1000, banana);
         for (int i = 0; i < lions.length; i++)
@@ -21,8 +21,8 @@ public class Main {
         u.countMealsForAnimalAMonth(monkeys);
         System.out.println("Федя посчитал количество еды на месяц (30 дней) для львов:");
         u.countMealsForAnimalAMonth(lions);
-        //System.out.println("Федя посчитал количество еды на месяц (30 дней) для медведей:");
-        //u.countMealsForAnimalAMonth(bears);
+        System.out.println("Федя посчитал количество еды на месяц (30 дней) для медведей:");
+        u.countMealsForAnimalAMonth(bears);
 
     }
 }
